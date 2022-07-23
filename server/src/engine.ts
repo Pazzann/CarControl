@@ -1,32 +1,31 @@
-import DistanceMeter from "./distance";
-import {Gpio} from "pigpio";
+const {DistanceMeter} = require('./distance');
+const Gpio = require('pigpio').Gpio;
 
 
 interface Config {
     safeMode: boolean,
-    distanceMeter: DistanceMeter | null,
 }
 
-interface Vec2 {
-    x: number,
-    y: number
-}
+// interface Vec2 {
+//     x: number,
+//     y: number
+// }
 
 export type WheelDirection = -1 | 0 | 1;
 
-class MovementController{
-    public direction: Vec2 = {x: 0, y: 0};
+// class MovementController{
+//     public direction: Vec2 = {x: 0, y: 0};
+//
+//     private calculate(){
+//
+//     }
+// }
 
-    private calculate(){
-
-    }
-}
-
-export default class Engine {
-    private backWard: Gpio;
-    private forWard: Gpio;
-    private rightWard: Gpio;
-    private leftWard: Gpio;
+module.exports.Engine = class{
+    private backWard: any;
+    private forWard: any;
+    private rightWard: any;
+    private leftWard: any;
     private Speed: number;
     private config: Config;
 
@@ -38,7 +37,6 @@ export default class Engine {
                 config: Config =
                     {
                         safeMode: true,
-                        distanceMeter: null
                     }) {
         this.backWard = new Gpio(backPin, {mode: Gpio.OUTPUT});
         this.forWard = new Gpio(frontPin, {mode: Gpio.OUTPUT});

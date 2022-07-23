@@ -1,11 +1,11 @@
-import Engine from "./engine";
-import DistanceMeter from "./distance";
+const {Engine} = require("./engine");
+const {DistanceMeter} = require("./distance");
 
-const distanceMeter: DistanceMeter = new DistanceMeter(23, 24);
+const distanceMeter = new DistanceMeter(23, 24);
 distanceMeter.startMeasuring();
 
 
-const carEngine: Engine = new Engine(13, 12, 21, 20, {safeMode: true, distanceMeter});
+const carEngine = new Engine(13, 12, 21, 20, {safeMode: true});
 carEngine.completeStop();
 
 const express = require("express");

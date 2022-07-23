@@ -1,5 +1,6 @@
-import Engine from "server/src/engine";
 import DistanceMeter from "./src/distance";
+
+const {Engine} = require('./src/engine')
 
 const Gpio = require('pigpio').Gpio;
 

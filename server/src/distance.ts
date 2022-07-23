@@ -6,7 +6,7 @@ interface Config {
     tickTime: number,
 }
 
-export default class DistanceMeter {
+module.exports.DistanceMeter = class {
     private echo: Gpio;
     private trigger: Gpio;
     private MICROSECDONDS_PER_CM: number = 1e6 / 34321;
