@@ -1,5 +1,6 @@
-import {Gpio} from "pigpio";
 import {clearInterval} from "timers";
+const Gpio = require('pigpio').Gpio;
+
 
 
 interface Config {
@@ -7,8 +8,8 @@ interface Config {
 }
 
 module.exports.DistanceMeter = class {
-    private echo: Gpio;
-    private trigger: Gpio;
+    private echo: any;
+    private trigger: any;
     private MICROSECDONDS_PER_CM: number = 1e6 / 34321;
     private _distance: number = 0;
     private config: Config;
@@ -19,7 +20,7 @@ module.exports.DistanceMeter = class {
         let startTick: number;
 
 
-        this.echo.on('alert', (level, tick) => {
+        this.echo.on('alert', (level: any, tick: number) => {
             if (level == 1) {
                 startTick = tick;
             } else {
