@@ -34,6 +34,6 @@ app.get("/api/hssr4", function (request: any, response: any) {
     response.send(JSON.stringify({distance: distanceMeter.distance}));
 });
 
-app.listen(4567);
+app.listen(4567, "localhost");
 
 console.log("Started!");
