@@ -1,4 +1,4 @@
-import Engine from "./engine";
+import Engine from "engine";
 
 const Gpio = require('pigpio').Gpio;
 
@@ -8,7 +8,8 @@ const backled = new Gpio(10, {mode: Gpio.OUTPUT});
 
 let switcher = true;
 
-const carEngine = new Engine(12, 13, 21, 20);
+const carEngine = new Engine(13, 12, 21, 20);
+carEngine.completeStop();
 
 function ledswitch() {
 
