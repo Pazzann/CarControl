@@ -1,5 +1,5 @@
-const {Engine} = require("./engine");
-const {DistanceMeter} = require("./distance");
+import Engine from "./engine";
+import DistanceMeter from "./distance";
 
 const distanceMeter = new DistanceMeter(23, 24);
 distanceMeter.startMeasuring();

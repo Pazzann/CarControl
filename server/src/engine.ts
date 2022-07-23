@@ -1,4 +1,4 @@
-const {DistanceMeter} = require('./distance');
+import DistanceMeter from "./distance";
 const Gpio = require('pigpio').Gpio;
 
 
@@ -21,7 +21,7 @@ export type WheelDirection = -1 | 0 | 1;
 //     }
 // }
 
-module.exports.Engine = class{
+export default class Engine {
     private backWard: any;
     private forWard: any;
     private rightWard: any;

@@ -7,7 +7,7 @@ interface Config {
     tickTime: number,
 }
 
-module.exports.DistanceMeter = class {
+export default class DistanceMeter {
     private echo: any;
     private trigger: any;
     private MICROSECDONDS_PER_CM: number = 1e6 / 34321;
