@@ -31,7 +31,7 @@ app.use(cors({
 
 app.get("/api/hssr4", function (request: any, response: any) {
     console.log("requested");
-    response.send(distanceMeter.distance);
+    response.send(JSON.stringify({distance: distanceMeter.distance}));
 });
 
 app.listen(4567);
