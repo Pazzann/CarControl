@@ -4,28 +4,16 @@ const Gpio = require('pigpio').Gpio;
 
 interface Config {
     safeMode: boolean,
+    distanceMeter: DistanceMeter | null
 }
-
-// interface Vec2 {
-//     x: number,
-//     y: number
-// }
 
 export type WheelDirection = -1 | 0 | 1;
 
-// class MovementController{
-//     public direction: Vec2 = {x: 0, y: 0};
-//
-//     private calculate(){
-//
-//     }
-// }
-
 export default class Engine {
-    private backWard: any;
-    private forWard: any;
-    private rightWard: any;
-    private leftWard: any;
+    private backWard;
+    private forWard;
+    private rightWard;
+    private leftWard;
     private Speed: number;
     private config: Config;
 
@@ -37,6 +25,7 @@ export default class Engine {
                 config: Config =
                     {
                         safeMode: true,
+                        distanceMeter: null
                     }) {
         this.backWard = new Gpio(backPin, {mode: Gpio.OUTPUT});
         this.forWard = new Gpio(frontPin, {mode: Gpio.OUTPUT});
@@ -46,24 +35,24 @@ export default class Engine {
         this.config = config;
     }
 
-    stopMoving() {
+    public stopMoving() {
         this.backWard.pwmWrite(0);
         this.forWard.pwmWrite(0);
     }
 
-    stopRotation() {
+    public stopRotation() {
         this.rightWard.digitalWrite(0);
         this.leftWard.digitalWrite(0);
     }
 
-    completeStop() {
+    public completeStop() {
         this.backWard.pwmWrite(0);
         this.forWard.pwmWrite(0);
         this.rightWard.digitalWrite(0);
         this.leftWard.digitalWrite(0);
     }
 
-    setSpeed(speed: number) {
+    public setSpeed(speed: number) {
         this.Speed = speed;
     }
 
@@ -129,12 +118,12 @@ export default class Engine {
         this.leftWard.digitalWrite(1);
     }
 
-    forwardTime(time: number) {
+    public forwardTime(time: number) {
         this.forward();
         setTimeout(this.stopMoving, time);
     }
 
-    backwardTime(time: number) {
+    public backwardTime(time: number) {
         this.backward();
         setTimeout(this.stopMoving, time);
     }
