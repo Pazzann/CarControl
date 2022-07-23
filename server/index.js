@@ -1,4 +1,5 @@
-import Engine from "engine";
+import Engine from "server/src/engine";
+import DistanceMeter from "./src/distance";
 
 const Gpio = require('pigpio').Gpio;
 
@@ -8,7 +9,8 @@ const backled = new Gpio(10, {mode: Gpio.OUTPUT});
 
 let switcher = true;
 
-const carEngine = new Engine(13, 12, 21, 20);
+const distanceMeter = new DistanceMeter(23, 24);
+const carEngine = new Engine(13, 12, 21, 20, {safeMode: false, distanceMeter});
 carEngine.completeStop();
 
 function ledswitch() {
