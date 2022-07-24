@@ -64,4 +64,4 @@ app.get("/api/temp", function (request: any, response: any) {
 })
 
 app.listen(4567, "localhost");
-console.log("Started at http://localhost:4567!");
+console.log("Started at http://192.168.0.112:4567!");
