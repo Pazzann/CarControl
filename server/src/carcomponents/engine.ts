@@ -6,7 +6,7 @@ interface Config {
     safeMode: boolean,
 }
 
-export type WheelDirection = -1 | 0 | 1;
+export type WheelDirection = "LEFT" | "STOP" | "RIGHT";
 
 export default class Engine {
     private backWard;
@@ -75,14 +75,16 @@ export default class Engine {
 
 
     public setRotation(dir: WheelDirection){
-        if (dir === 0){
+        if (dir === "STOP"){
             this.stopRotation();
-        }else if (dir === -1){
+        }else if (dir === "LEFT"){
             this.stopRotation();
             this.left();
-        }else{
+        }else if (dir === "RIGHT"){
             this.stopRotation();
             this.right();
+        }else{
+            throw new Error("Value does not meet criteria(LEFT | STOP | RIGHT)");
         }
     }
 

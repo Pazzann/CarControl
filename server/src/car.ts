@@ -1,4 +1,4 @@
-import Engine from "./carcomponents/engine";
+import Engine, {WheelDirection} from "./carcomponents/engine";
 import DistanceMeter from "./carcomponents/distanceMeterHSSR04";
 import Led from "./carcomponents/led";
 import MovementController from "./carcomponents/movementController";
@@ -32,4 +32,14 @@ export class Car {
     switchLedById(id: number){
         this.leds.get(id).switchLed();
     }
+
+    move(rpm: number){
+        this.engine.setRPM(rpm);
+    }
+
+    rotate(dir: WheelDirection){
+        this.engine.setRotation(dir);
+    }
+
+
 }

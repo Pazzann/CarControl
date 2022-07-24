@@ -4,6 +4,9 @@ import Led from "./src/carcomponents/led";
 import {Car} from "./src/car";
 import MovementController from "./src/carcomponents/movementController";
 
+
+const temp = require("pi-temperature");
+
 const car = new Car({
     engine: new Engine(13, 12, 21, 20, {safeMode: true}),
     distanceMeter: new DistanceMeter(23, 24),
@@ -47,6 +50,21 @@ app.get("/api/backlamp", function (request: any, response: any) {
 app.get("/api/hssr4", function (request: any, response: any) {
     response.send(JSON.stringify({distance: car.distanceMeter.distance}));
 });
+
+app.get("/api/move", function (request: any, response: any) {
+    car.move(request.query.rpm);
+});
+
+app.get("/api/rotate", function (request: any, response: any) {
+    car.rotate(request.query.rotation);
+});
+
+app.get("/api/temp", function (request: any, response: any) {
+    temp.measure(function (err, temp) {
+        if (err) response.send(err);
+        else response.send(temp);
+    });
+})
 
 app.listen(4567, "localhost");
 console.log("Started at http://localhost:4567!");
