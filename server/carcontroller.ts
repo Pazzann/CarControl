@@ -34,19 +34,16 @@ app.use(cors({
 
 //api responses
 
-//frontLed
 app.get("/api/lamp", function (request: any, response: any) {
     car.switchLedById(1);
     response.end();
 });
 
-//backLed
 app.get("/api/backlamp", function (request: any, response: any) {
     car.switchLedById(2);
     response.end();
 });
 
-//distance component response
 app.get("/api/hssr4", function (request: any, response: any) {
     response.send(JSON.stringify({distance: car.distanceMeter.distance}));
 });
