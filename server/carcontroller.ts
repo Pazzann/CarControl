@@ -1,6 +1,6 @@
-import Engine from "./engine";
-import DistanceMeter from "./distance";
-import Led from "./led";
+import Engine from "./src/engine";
+import DistanceMeter from "./src/distance";
+import Led from "./src/led";
 
 //parts initialisation
 

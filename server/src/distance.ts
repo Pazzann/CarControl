@@ -1,6 +1,4 @@
-import {clearInterval} from "timers";
-const Gpio = require('pigpio').Gpio;
-
+import {Gpio} from "pigpio";
 
 
 interface Config {

@@ -5,5 +5,26 @@
     "pi-temperature": "^2.1.0",
     "pigpio": "^3.3.1",
     "pigpio-client": "^1.5.2"
-  }
+  },
+  "name": "picontrolserver",
+  "version": "1.0.0",
+  "description": "PiCar control library on node js",
+  "main": "carcontroller.ts",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pazzann/CarControl.git"
+  },
+  "keywords": [
+    "RaspberryPi"
+  ],
+  "author": "boyfromgod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pazzann/CarControl/issues"
+  },
+  "homepage": "https://github.com/Pazzann/CarControl#readme"
 }

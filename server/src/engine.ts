@@ -1,5 +1,5 @@
 import DistanceMeter from "./distance";
-const Gpio = require('pigpio').Gpio;
+import {Gpio} from "pigpio";
 
 
 interface Config {

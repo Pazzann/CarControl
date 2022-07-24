@@ -1,4 +1,4 @@
-const Gpio = require('pigpio').Gpio;
+import {Gpio} from "pigpio";
 
 interface Config {
     type: "ON/OFF" | "ON"
