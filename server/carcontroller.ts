@@ -57,7 +57,7 @@ app.get("/api/rotate", function (request: any, response: any) {
 });
 
 app.get("/api/temp", function (request: any, response: any) {
-    temp.measure(function (err, temp) {
+    temp.measure(function (err: Error | null, temp: number | undefined) {
         if (err) response.send(err);
         else response.send(temp);
     });
