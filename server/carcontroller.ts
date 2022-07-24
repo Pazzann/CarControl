@@ -1,20 +1,22 @@
-import Engine from "./src/engine";
-import DistanceMeter from "./src/distance";
-import Led from "./src/led";
+import Engine from "./src/carcomponents/engine";
+import DistanceMeter from "./src/carcomponents/distanceMeterHSSR04";
+import Led from "./src/carcomponents/led";
+import {Car} from "./src/car";
+import MovementController from "./src/carcomponents/movementController";
 
-//parts initialisation
+const car = new Car({
+    engine: new Engine(13, 12, 21, 20, {safeMode: true}),
+    distanceMeter: new DistanceMeter(23, 24),
+    movementController: new MovementController(),
+    leds: [
+        [1, new Led(16, {type: "ON/OFF"})],
+        [2, new Led(10, {type: "ON"})]
+    ]
+});
 
-//hs-sr04
-const distanceMeter = new DistanceMeter(23, 24);
-distanceMeter.startMeasuring();
+car.distanceMeter.startMeasuring();
+car.engine.completeStop();
 
-//engines
-const carEngine = new Engine(13, 12, 21, 20, {safeMode: true, distanceMeter});
-carEngine.completeStop();
-
-//leds
-const frontLed = new Led(16, {type: "ON/OFF"});
-const backLed = new Led(10, {type: "ON"});
 
 //express server initialisation
 const express = require("express");
@@ -31,19 +33,19 @@ app.use(cors({
 
 //frontLed
 app.get("/api/lamp", function (request: any, response: any) {
-    frontLed.switchLed();
+    car.switchLedById(1);
     response.end();
 });
 
 //backLed
 app.get("/api/backlamp", function (request: any, response: any) {
-    backLed.switchLed();
+    car.switchLedById(2);
     response.end();
 });
 
 //distance component response
 app.get("/api/hssr4", function (request: any, response: any) {
-    response.send(JSON.stringify({distance: distanceMeter.distance}));
+    response.send(JSON.stringify({distance: car.distanceMeter.distance}));
 });
 
 app.listen(4567, "localhost");

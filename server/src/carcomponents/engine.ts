@@ -1,10 +1,9 @@
-import DistanceMeter from "./distance";
+import DistanceMeter from "./distanceMeterHSSR04";
 import {Gpio} from "pigpio";
 
 
 interface Config {
     safeMode: boolean,
-    distanceMeter: DistanceMeter | null
 }
 
 export type WheelDirection = -1 | 0 | 1;
@@ -25,7 +24,6 @@ export default class Engine {
                 config: Config =
                     {
                         safeMode: true,
-                        distanceMeter: null
                     }) {
         this.backWard = new Gpio(backPin, {mode: Gpio.OUTPUT});
         this.forWard = new Gpio(frontPin, {mode: Gpio.OUTPUT});

@@ -10,7 +10,6 @@
   "version": "1.0.0",
   "description": "PiCar control library on node js",
   "main": "carcontroller.ts",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/Pazzann/CarControl/issues"
   },
-  "homepage": "https://github.com/Pazzann/CarControl#readme"
+  "homepage": "https://github.com/Pazzann/CarControl#readme",
+  "devDependencies": {
+    "@types/node": "^18.0.6"
+  }
 }
