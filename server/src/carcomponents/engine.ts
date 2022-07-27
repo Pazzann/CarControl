@@ -31,12 +31,12 @@ export default class Engine {
         this.leftWard = new Gpio(leftPin, {mode: Gpio.OUTPUT});
         this.Speed = 0;
         this.config = config;
-        this.stopMoving.bind(this);
-        this.stopRotation.bind(this);
-        this.completeStop.bind(this);
-        this.setRPMTime.bind(this);
-        this.forwardTime.bind(this);
-        this.backwardTime.bind(this);
+        // this.stopMoving.bind(this);
+        // this.stopRotation.bind(this);
+        // this.completeStop.bind(this);
+        // this.setRPMTime.bind(this);
+        // this.forwardTime.bind(this);
+        // this.backwardTime.bind(this);
     }
 
     public stopMoving() {
