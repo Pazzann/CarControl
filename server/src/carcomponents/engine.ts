@@ -15,7 +15,16 @@ export default class Engine {
     private leftWard;
     private Speed: number;
     private config: Config;
-
+    private intervalMoving: any = {
+        curr_interval: null,
+        timeMovement(rpm: number, ms: number, engine: Engine){
+            (this.curr_interval !== null) ? this.curr_interval.clearInterval() : this.curr_interval = null;
+            this.curr_interval = setInterval(() =>{
+                this.setRPM(rpm);
+                setTimeout(engine.stopMoving, ms);
+            }, ms);
+        }
+    };
 
     constructor(frontPin: number,
                 backPin: number,
@@ -55,10 +64,7 @@ export default class Engine {
     }
 
     public setRPMTime(rpm: number, ms: number){
-        setInterval(() =>{
-            this.setRPM(rpm);
-            setTimeout(() => {this.stopMoving()}, ms);
-        }, ms);
+        this.intervalMoving.timeMovement(rpm, ms, this);
     }
 
     public setRPM(rpm: number){
