@@ -49,7 +49,7 @@ app.get("/api/hssr4", function (request: any, response: any) {
 });
 
 app.get("/api/move", function (request: any, response: any) {
-    car.moveTime(request.query.rpm, 100);
+    car.move(request.query.rpm);
 });
 
 app.get("/api/rotate", function (request: any, response: any) {
