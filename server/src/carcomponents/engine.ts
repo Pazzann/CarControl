@@ -20,7 +20,7 @@ export default class Engine {
         timeMovement(rpm: number, ms: number, engine: Engine){
             (this.curr_interval !== null) ? this.curr_interval.clearInterval() : this.curr_interval = null;
             this.curr_interval = setInterval(() =>{
-                this.setRPM(rpm);
+                engine.setRPM(rpm);
                 setTimeout(engine.stopMoving, ms);
             }, ms);
         }
