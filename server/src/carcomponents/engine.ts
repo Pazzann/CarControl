@@ -15,16 +15,7 @@ export default class Engine {
     private leftWard;
     private Speed: number;
     private config: Config;
-    private intervalMoving: any = {
-        curr_interval: null,
-        timeMovement(rpm: number, ms: number, engine: Engine){
-            (this.curr_interval !== null) ? this.curr_interval.clearInterval() : this.curr_interval = null;
-            this.curr_interval = setInterval(() =>{
-                engine.setRPM(rpm);
-                setTimeout(engine.stopMoving, ms);
-            }, ms);
-        }
-    };
+
 
     constructor(frontPin: number,
                 backPin: number,
@@ -40,6 +31,12 @@ export default class Engine {
         this.leftWard = new Gpio(leftPin, {mode: Gpio.OUTPUT});
         this.Speed = 0;
         this.config = config;
+        this.stopMoving.bind(this);
+        this.stopRotation.bind(this);
+        this.completeStop.bind(this);
+        this.setRPMTime.bind(this);
+        this.forwardTime.bind(this);
+        this.backwardTime.bind(this);
     }
 
     public stopMoving() {
@@ -62,6 +59,17 @@ export default class Engine {
     public setSpeed(speed: number) {
         this.Speed = speed;
     }
+
+    private intervalMoving: any = {
+        curr_interval: null,
+        timeMovement(rpm: number, ms: number, engine: Engine){
+            (this.curr_interval !== null) ? this.curr_interval.clearInterval() : this.curr_interval = null;
+            this.curr_interval = setInterval(() =>{
+                engine.setRPM(rpm);
+                setTimeout(engine.stopMoving, ms);
+            }, ms);
+        }
+    };
 
     public setRPMTime(rpm: number, ms: number){
         this.intervalMoving.timeMovement(rpm, ms, this);
