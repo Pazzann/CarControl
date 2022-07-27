@@ -8,7 +8,7 @@ import MovementController from "./src/carcomponents/movementController";
 const temp = require("pi-temperature");
 
 const car = new Car({
-    engine: new Engine(13, 12, 21, 20, {safeMode: true}),
+    engine: new Engine(13, 12, 21, 20, {safeMode: false}),
     distanceMeter: new DistanceMeter(23, 24),
     movementController: new MovementController(),
     leds: [
@@ -63,5 +63,7 @@ app.get("/api/temp", function (request: any, response: any) {
     });
 })
 
-app.listen(4567, "localhost");
-console.log("Started at http://192.168.0.112:4567!");
+app.listen(4567,
+    "192.168.0.112",
+    ()=>{console.log(`Started at http://192.168.0.112:4567!`);}
+);

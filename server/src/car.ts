@@ -37,6 +37,10 @@ export class Car {
         this.engine.setRPM(rpm);
     }
 
+    moveTime(rpm:number, ms: number){
+        this.engine.setRPMTime(rpm, ms);
+    }
+
     rotate(dir: WheelDirection){
         this.engine.setRotation(dir);
     }

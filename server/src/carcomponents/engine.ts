@@ -54,6 +54,13 @@ export default class Engine {
         this.Speed = speed;
     }
 
+    public setRPMTime(rpm: number, ms: number){
+        setInterval(() =>{
+            this.setRPM(rpm);
+            setTimeout(() => {this.stopMoving()}, ms);
+        }, ms);
+    }
+
     public setRPM(rpm: number){
         if(this.config.safeMode){
             console.log("Error: you're in safeMode, change the config or use direction + Time!");
