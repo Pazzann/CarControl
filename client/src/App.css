@@ -1,43 +1,64 @@
 @import url("styles/carcontrol.css");
 
 
+body{
+  background: black;
+}
+
 .App {
   text-align: center;
+  margin: 50px auto;
+  width: 20%;
+  height: 200px;
+  border: 3px solid black;
+  position: relative;
+  background: gray;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.input{
+  transform: rotateZ(270deg);
+  width: 150px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.text{
+  margin: auto;
+  text-align: center;
+  width: 50%;
+}
+.but{
+  width: 35%;
+  margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.font{
+  font-family: "Comic Sans MS";
 }
 
-.App-link {
-  color: #61dafb;
+#move{
+  position: absolute;
+  left: -20px;
+  top: 100px
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#rotate{
+  top: 100px;
+  position: absolute;
+  right: -20px;
+}
+
+
+#moveText{
+  position: absolute;
+  left: 30px;
+  top: 10px
+}
+
+#rotateText{
+  position: absolute;
+  right: 10px;
+  top: 10px
 }
